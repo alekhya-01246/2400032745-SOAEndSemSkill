@@ -1,0 +1,92 @@
+EXPERIMENT 9
+UNIT TESTING CONTROLLER ENDPOINTS WITH MOCKMVC
+
+AIM
+To unit test the MS1Controller endpoint using MockMvc without starting the full server.
+
+SOFTWARE REQUIREMENTS
+1. Java JDK 17 or later
+2. Spring Tool Suite (STS) / Eclipse
+3. Maven
+4. Spring Boot
+
+THEORY
+MockMvc is a Spring testing utility used to perform simulated HTTP requests and verify
+controller responses without starting an actual web server. @WebMvcTest loads the
+Spring MVC web layer needed for controller testing. JUnit is used to execute test
+methods and verify expected results.
+
+PROCEDURE
+1. Create a Spring Boot Maven project.
+2. Add spring-boot-starter-web and spring-boot-starter-test dependencies.
+3. Create MS1Controller with the /ms1/add GET endpoint.
+4. Create MS1ControllerTest under src/test/java.
+5. Use @WebMvcTest(MS1Controller.class) and inject MockMvc.
+6. Send a GET request with parameters a=5 and b=10.
+7. Verify HTTP status 200 and the exact response body.
+8. Run the test as JUnit Test.
+
+INPUT
+a = 5
+b = 10
+
+EXPECTED OUTPUT
+HTTP Status: 200 OK
+Response Body: MS 1.1 - Addition = 15
+
+RESULT
+The MS1Controller endpoint is tested successfully using MockMvc when the JUnit test
+passes with zero failures.
+
+VIVA QUESTIONS
+1. What is unit testing?
+   Unit testing checks an individual part of a program independently.
+
+2. What is MockMvc?
+   MockMvc simulates HTTP requests and tests controller responses without starting
+   an actual web server.
+
+3. What is web-layer testing?
+   It tests the Spring MVC layer, especially controller request handling and responses.
+
+4. What is @WebMvcTest?
+   It loads the Spring MVC test configuration for a selected controller or web layer.
+
+5. What is JUnit?
+   JUnit is a Java framework used to write and run automated tests.
+
+6. What is @Test?
+   It marks a method as a test method.
+
+7. What is @GetMapping?
+   It maps an HTTP GET request to a controller method.
+
+8. What is @RequestParam?
+   It reads values from URL query parameters.
+
+9. What does status().isOk() check?
+   It checks that the HTTP response status is 200 OK.
+
+10. What does content().string() check?
+    It checks the exact response body.
+
+11. Why use web-layer testing instead of full-context testing?
+    It loads fewer application components, so the test is usually faster and focused
+    on the web layer.
+
+12. Does MockMvc start a real web server?
+    No. It performs mock request processing through Spring MVC without starting a
+    real HTTP server.
+
+13. What is the request used in this experiment?
+    GET /ms1/add?a=5&b=10
+
+14. What is the expected response?
+    MS 1.1 - Addition = 15
+
+15. What does HTTP 200 mean?
+    The request was successful.
+
+NOTE
+This is a standalone sample project. If you copy the classes into an existing project,
+make sure their package declarations match your project's package.
